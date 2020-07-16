@@ -1,0 +1,22 @@
+.image-container{
+    background: url("../../assets/img/loginImg.jpg") center no-repeat;
+    background-size: cover;
+    height: 100vh;
+} 
+.form-container{
+    background-color: rgba(242, 191, 39, 1);
+    display: flex;
+    justify-content: center;
+}
+.form-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+.form-box h4{
+    font-weight: bold;
+    color: rgba(99, 93, 93, 1);
+}
+
+
