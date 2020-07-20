@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { OrderComponent } from './components/waiter/order/order.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
