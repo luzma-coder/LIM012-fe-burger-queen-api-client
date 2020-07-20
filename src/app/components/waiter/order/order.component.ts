@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -7,14 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-
-  constructor(private router: Router) { }
-
+  // constructor(private router: Router) {}
   ngOnInit(): void {
   }
-
-  navigateToOrders(): void {
-    this.router.navigate(['/']);
-  }
-
+  // navigateToOrders(): void {
+  //   this.router.navigate(['/']);
+  // }
 }
