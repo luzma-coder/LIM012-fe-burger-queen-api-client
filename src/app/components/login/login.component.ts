@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  navigateToWaiterOrder(): void {
+  navigateToOrders(): void {
     this.router.navigate(['/order']);
   }
 }

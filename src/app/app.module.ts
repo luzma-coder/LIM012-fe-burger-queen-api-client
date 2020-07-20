@@ -9,7 +9,6 @@ import { OrderComponent } from './components/waiter/order/order.component';
 import { PendingsComponent } from './components/waiter/pendings/pendings.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
