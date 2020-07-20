@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OrderComponent } from './components/waiter/order/order.component';
+import { PendingsComponent } from './components/waiter/pendings/pendings.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { OrderComponent } from './components/waiter/order/order.component';
     AppComponent,
     LoginComponent,
     OrderComponent,
+    PendingsComponent,
   ],
   imports: [
     BrowserModule,
