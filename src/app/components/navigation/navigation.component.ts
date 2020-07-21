@@ -7,16 +7,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
-  constructor(private router: Router) {}
+  active = 'top';
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
-  navigateToOrder(): void {
-    this.router.navigate(['/order']);
+  navigateToOrders(): void {
+    this.router.navigate(['/navigation/order']);
   }
   navigateToPendings(): void {
-    this.router.navigate(['/pendings']);
+    this.router.navigate(['/navigation/pendings']);
+  }
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
   }
 }
+

@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  // constructor(private router: Router) {}
+
+  constructor() { }
+
   ngOnInit(): void {
   }
-  // navigateToOrders(): void {
-  //   this.router.navigate(['/']);
-  // }
+
+  navigateToOrders(): void {
+  }
+
 }

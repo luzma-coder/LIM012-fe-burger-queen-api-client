@@ -6,11 +6,17 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'order', component: OrderComponent},
-  {path: 'pendings', component: PendingsComponent},
-  {path: 'navigation', component: NavigationComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'}
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'navigation',
+    component: NavigationComponent,
+    children: [
+      { path: '', redirectTo: '/order', pathMatch: 'full' },
+      { path: 'order', component: OrderComponent },
+      { path: 'pendings', component: PendingsComponent },
+    ]
+  },
 ];
 
 @NgModule({
