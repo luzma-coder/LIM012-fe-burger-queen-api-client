@@ -11,5 +11,7 @@ export class PendingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  navigateToPendings(): void {
+  }
 
 }
