@@ -8,13 +8,12 @@ import { Router } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  navigateToOrders(){
-    this.router.navigate(['/']);
+  navigateToOrders(): void {
   }
 
 }
