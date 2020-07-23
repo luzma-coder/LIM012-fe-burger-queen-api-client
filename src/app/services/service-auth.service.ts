@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceAuthService {
   url: string;
-  json;
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:3000/';
   }
@@ -19,8 +19,6 @@ export class ServiceAuthService {
     this.http.post(`${this.url}auth`, body)
       .subscribe(resp => {
         console.log(resp);
-        console.log(resp.json.token);
-        this.json = JSON.stringify(resp.json);
       });
   }
 }
