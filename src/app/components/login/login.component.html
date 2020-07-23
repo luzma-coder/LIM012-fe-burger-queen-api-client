@@ -18,13 +18,13 @@
                             <form>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" required>
+                                    <input #email type="email" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" required>
+                                    <input #password type="password" class="form-control" required>
                                 </div>
-                                <button class="btn btn-primary btn-lg btn-block" (click)="authUser()">Login
+                                <button class="btn btn-primary btn-lg btn-block" (click)="authUser(email.value, password.value)">Login
                                 </button>
                             </form>
                         </div>
@@ -34,6 +34,3 @@
         </div>
     </div>
 </div>
-<pre>
-    {{ json }}
-</pre>
