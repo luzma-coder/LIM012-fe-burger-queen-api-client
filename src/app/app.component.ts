@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'LIM012-fe-burger-queen-api-client';
+
 }
