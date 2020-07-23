@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServiceAuthService } from '../../services/service-auth.service';
-
 import { HttpClient } from '@angular/common/http';
 
+import { ServiceAuthService } from '../../services/service-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,32 +10,41 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email: string;
-  password: string;
-  json;
 
   constructor(
     private router: Router,
     private authService: ServiceAuthService
   ) { }
 
-  /*  constructor(private router: Router) { } */
   ngOnInit(): void {
   }
-  /* navigateToOrders(): void {
-    this.authService.getServiceAuth();
-    this.router.navigate(['/navigation/order']);
 
-  } */
   navigateToOrders(): void {
     this.router.navigate(['/navigation/order']);
 
   }
-  authUser(): void {
-    this.authService.getServiceAuth();
-    this.navigateToOrders();
-    /* this.router.navigate(['/navigation/order']); */
 
+  authUser(email: string, password: string): void {
+    email = email.trim();
+    password = password.trim();
+    if (!email) { alert('ingrese email'); return; }
+    if (!password) {alert('ingrese password'); return; }
+    const objUser = {
+      email,
+      password,
+      token: '',
+    };
+    this.authService.getServiceAuth(objUser)
+      .subscribe((resp: any) => {
+        console.log(resp);
+        console.log(resp.token);
+        console.log(resp.token.length);
+        if (resp.token.length > 0) {
+         this.navigateToOrders();
+        } else {
+          alert('error');
+        }
+      });
   }
 }
 
