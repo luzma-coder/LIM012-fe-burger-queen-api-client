@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceAuthService } from '../../services/service-auth.service';
+
 import { HttpClient } from '@angular/common/http';
 
 
@@ -11,34 +13,30 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  json;
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private authService: ServiceAuthService
   ) { }
-
-  postData(): void {
-    const url = 'http://httpbin.org/post';
-    this.http.post(url, {
-      email: this.email
-    }).toPromise().then((data: any) => {
-      console.log(data);
-      console.log(JSON.stringify(data.json.name));
-    });
-  }
 
   /*  constructor(private router: Router) { } */
   ngOnInit(): void {
   }
+  /* navigateToOrders(): void {
+    this.authService.getServiceAuth();
+    this.router.navigate(['/navigation/order']);
+
+  } */
   navigateToOrders(): void {
     this.router.navigate(['/navigation/order']);
+
   }
-  login(): void {
-    if (this.postData()) {
-      this.navigateToOrders();
-    } else {
-      console.log('trabajador no autenticado');
-    }
+  authUser(): void {
+    this.authService.getServiceAuth();
+    this.navigateToOrders();
+    /* this.router.navigate(['/navigation/order']); */
+
   }
 }
 

@@ -1,9 +1,61 @@
 {
-  "posts": [
+  "auth": [
     {
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "email": "test@Test.com",
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "email": "test@Test.com",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "email": "test@Test.com",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "email": "test@Test.com",
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "email": "test@Test.com",
+      "password": "1234",
+      "id": 6
+    },
+    {
+      "email": "test2@Test.com",
+      "password": "12345",
+      "id": 7
+    },
+    {
+      "email": "test2@Test.com",
+      "password": "12345",
+      "id": 8
+    },
+    {
+      "email": "test2@Test.com",
+      "password": "12345",
+      "id": 9
+    },
+    {
+      "email": "test2@Test.com",
+      "password": "12345",
+      "token": "nnjnjnjnnjnj",
+      "id": 10
+    },
+    {
+      "email": "test2@Test.com",
+      "password": "12345",
+      "token": "nnjnjnjnnjnj",
+      "id": 11
     }
   ],
   "comments": [
