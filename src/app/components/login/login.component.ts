@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 import { ServiceAuthService } from '../../services/service-auth.service';
 
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
     const objUser = {
       email,
       password,
-      token: '',
+      token: 'jdsgjk3y87',
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {

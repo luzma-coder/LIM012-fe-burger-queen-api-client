@@ -18,11 +18,7 @@ export class ServiceAuthService {
 
   // tslint:disable-next-line: ban-types
   getServiceAuth(body: object): Observable<Object> {
-    // const body = {
-    //   email: 'test3@Test.com',
-    //   password: '12345',
-    //   token: 'nhkjsdh73487'
-    // };
+
     return this.http.post(`${this.url}auth`, body);
 
     // this.http.post(`${this.url}auth`, body).toPromise().then((resp: any) => {
