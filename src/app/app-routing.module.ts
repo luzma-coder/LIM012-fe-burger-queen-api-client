@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/order', pathMatch: 'full' },
       { path: 'order', component: OrderComponent },
       { path: 'pendings', component: PendingsComponent },
-      { path: 'users', component: UserComponent },
+      { path: 'user', component: UserComponent },
     ]
   },
 ];

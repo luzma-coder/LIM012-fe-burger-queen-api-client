@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   navigateToUsers(): void {
-    this.router.navigate(['/admin/users']);
+    this.router.navigate(['/navigation/user']);
   }
 }
 

@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         if (resp.token.length > 0) {
          this.navigateToOrders();
         } else {
-          alert('error');
+          alert('email o password no coinciden');
         }
       });
   }
