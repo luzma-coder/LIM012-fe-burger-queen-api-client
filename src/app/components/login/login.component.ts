@@ -26,16 +26,15 @@ export class LoginComponent implements OnInit {
   authUser(email: string, password: string): void {
     email = email.trim();
     password = password.trim();
-    if (!email) { alert('ingrese email'); return; }
-    if (!password) {alert('ingrese password'); return; }
+    // if (!email) { alert('ingrese email'); return; }
+    // if (!password) {alert('ingrese password'); return; }
     const objUser = {
       email,
-      password,
-      token: 'jdsgjk3y87',
+      password
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {
-        console.log(resp);
+        console.log(resp.status);
         console.log(resp.token);
         console.log(resp.token.length);
         if (resp.token.length > 0) {
