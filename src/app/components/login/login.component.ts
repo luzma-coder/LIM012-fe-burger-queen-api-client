@@ -28,19 +28,21 @@ export class LoginComponent implements OnInit {
     email = email.trim();
     password = password.trim();
     if (!email) { alert('ingrese email'); return; }
-    if (!password) {alert('ingrese password'); return; }
+    if (!password) { alert('ingrese password'); return; }
     const objUser = {
       email,
       password,
-      token: '',
+      token: 'dkkdkdk',
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {
         console.log(resp);
-        console.log(resp.token);
-        console.log(resp.token.length);
+        localStorage.setItem('token', resp.token);
+        localStorage.getItem('token');
+        /*         console.log(resp.token);
+                console.log(resp.token.length); */
         if (resp.token.length > 0) {
-         this.navigateToOrders();
+          this.navigateToOrders();
         } else {
           alert('error');
         }
