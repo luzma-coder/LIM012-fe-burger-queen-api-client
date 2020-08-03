@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {
+        localStorage.setItem('token', resp.token);
         console.log(resp.status);
         console.log(resp.token);
         console.log(resp.token.length);

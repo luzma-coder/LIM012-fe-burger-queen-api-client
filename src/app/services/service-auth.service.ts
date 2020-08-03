@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ServiceAuthService {
 
   url = 'http://localhost:3000/';
+  LStoken = localStorage.getItem('token');
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
