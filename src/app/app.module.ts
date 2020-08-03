@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OrderComponent } from './components/waiter/order/order.component';
 import { PendingsComponent } from './components/waiter/pendings/pendings.component';
+import { UserComponent } from './components/admin/users/user.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     OrderComponent,
     PendingsComponent,
+    UserComponent,
     NavigationComponent,
   ],
   imports: [

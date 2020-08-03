@@ -1,0 +1,26 @@
+<h2>USUARIOS</h2>
+<div class="dflex">
+  <aside>
+    <ul class="">
+      <li *ngFor="let user of totUsers">
+        <a routerLink="/detail/{{user.email}}">
+          <span class="badge">{{user.email}}</span> {{user.password}}
+        </a>
+        <button class="delete" title="delete User"
+          (click)="deleteUser(user)">x</button>
+      </li>
+    </ul>
+  </aside>
+
+  <section>
+    <label>Email:
+      <input #userEmail />
+    </label>
+    <label>Password:
+      <input #userPassword />
+    </label>
+    <button (click)="updateUser()">
+      Guardar
+    </button>
+  </section>
+</div>
