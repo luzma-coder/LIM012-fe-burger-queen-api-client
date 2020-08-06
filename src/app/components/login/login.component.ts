@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { ServiceAuthService } from '../../services/service-auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: ServiceAuthService
+    private authService: ServiceAuthService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   navigateToOrders(): void {
     this.router.navigate(['/navigation/order']);
-
   }
 
   authUser(email: string, password: string): void {
@@ -34,16 +36,20 @@ export class LoginComponent implements OnInit {
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {
-        localStorage.setItem('token', resp.token);
-        console.log(resp.status);
-        console.log(resp.token);
-        console.log(resp.token.length);
-        if (resp.token.length > 0) {
-         this.navigateToOrders();
-        } else {
-          alert('email o password no coinciden');
+        if (resp.body.token.length > 0 && resp.status === 200) {
+          localStorage.setItem('token', resp.body.token);
+          this.userService.getUser(email)
+          .subscribe((data) => {
+            if (data.roles.admin){
+              this.router.navigate(['/navigation/user']);
+            } else {
+              this.router.navigate(['/navigation/order']);
+            }
+          });
         }
+      }, (error: HttpErrorResponse) => {
+        alert('email y password son necesarios');
+        console.log(error.status);
       });
   }
 }
-
