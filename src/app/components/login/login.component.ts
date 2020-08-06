@@ -14,8 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: ServiceAuthService,
-    private userService: UserService
+    private authService: ServiceAuthService
   ) { }
 
   ngOnInit(): void {
@@ -38,14 +37,7 @@ export class LoginComponent implements OnInit {
       .subscribe((resp: any) => {
         if (resp.body.token.length > 0 && resp.status === 200) {
           localStorage.setItem('token', resp.body.token);
-          this.userService.getUser(email)
-          .subscribe((data) => {
-            if (data.roles.admin){
-              this.router.navigate(['/navigation/user']);
-            } else {
-              this.router.navigate(['/navigation/order']);
-            }
-          });
+          this.navigateToOrders();
         }
       }, (error: HttpErrorResponse) => {
         alert('email y password son necesarios');
