@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 import { ServiceAuthService } from '../../services/service-auth.service';
 
@@ -27,24 +26,22 @@ export class LoginComponent implements OnInit {
   authUser(email: string, password: string): void {
     email = email.trim();
     password = password.trim();
-    if (!email) { alert('ingrese email'); return; }
-    if (!password) { alert('ingrese password'); return; }
+    // if (!email) { alert('ingrese email'); return; }
+    // if (!password) {alert('ingrese password'); return; }
     const objUser = {
       email,
-      password,
-      token: 'dkkdkdk',
+      password
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {
-        console.log(resp);
         localStorage.setItem('token', resp.token);
-        localStorage.getItem('token');
-        /*         console.log(resp.token);
-                console.log(resp.token.length); */
+        console.log(resp.status);
+        console.log(resp.token);
+        console.log(resp.token.length);
         if (resp.token.length > 0) {
           this.navigateToOrders();
         } else {
-          alert('error');
+          alert('email o password no coinciden');
         }
       });
   }
