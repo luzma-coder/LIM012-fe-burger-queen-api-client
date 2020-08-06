@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -8,6 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'LIM012-fe-burger-queen-api-client';
+  title = 'Burguer-Queen-AC';
 
 }
