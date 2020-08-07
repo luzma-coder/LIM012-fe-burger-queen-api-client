@@ -6,7 +6,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { UserComponent } from './components/admin/users/user.component';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
@@ -22,7 +22,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {initialNavigation : true}
+    )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { ServiceAuthService } from '../../services/service-auth.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
