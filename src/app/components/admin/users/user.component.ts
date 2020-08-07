@@ -16,6 +16,28 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  // leer un usuario
+
+  // (): void {
+
+//   this.userService.getUser(email)
+//   .subscribe((data) => {
+//     if (data.roles.admin){
+//       this.router.navigate(['/navigation/user']);
+//     } else {
+//       this.router.navigate(['/navigation/order']);
+//     }
+//   });
+//   ,  (error: HttpErrorResponse) => {
+//     alert('email y password son necesarios');
+//     console.log(error.status);
+
+// }
+// }
+
+//   ler todos
+
   updateUser(): void{
 
   }
