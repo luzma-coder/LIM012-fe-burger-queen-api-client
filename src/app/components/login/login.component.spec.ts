@@ -1,60 +1,46 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 import { LoginComponent } from './login.component';
-
-class MockAuthService {
-  authenticated = false;
-
-  isAuthenticated(): any {
-    return this.authenticated;
-  }
-}
+import { ServiceAuthService } from '../../services/service-auth.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
-  let authservice: MockAuthService;
-  let userservice: MockAuthService;
+  let fixture: ComponentFixture<LoginComponent>;
+
+  // Create a fake TwainService object with a `getQuote()` spy
+  const routerSpy = jasmine.createSpyObj('Router', ['navigateToOrders']);
+  const serviceAuthService = jasmine.createSpyObj('ServiceAuthService', ['getServiceAuth']);
+  // Make the spy return a synchronous Observable with the test data
+  const data = {
+    body  : {
+      token : '823747jnd',
+    },
+    status : 200
+    };
+
+  let getServiceAuthSpy;
+  getServiceAuthSpy = serviceAuthService.getServiceAuth.and.returnValue( of(data) );
+
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ LoginComponent ],
+      providers: [
+        { provide: Router, useValue: routerSpy },
+        { provide: ServiceAuthService, useValue: serviceAuthService } ],
+    })
+    .compileComponents();
+  }));
 
   beforeEach(() => {
-    authservice = new MockAuthService();
-    userservice = new MockAuthService();
-    // component = new LoginComponent(router, authservice, userservice);
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  afterEach(() => {
-    authservice = null;
-    userservice = null;
-    component = null;
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
-
-
-  it('can Login returns true when the user is authenticated', () => {
-    authservice.authenticated = true;
-    expect(component.navigateToOrders()).toBeTruthy();
-  });
-  // let fixture: ComponentFixture<LoginComponent>;
-  // let userServiceStub: Partial<UserService>;
-
-  // userServiceStub = {
-  //   isLoggedIn: true,
-  //   user: { name: 'Test User' },
-  // };
-
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [ LoginComponent ],
-  //     providers: [ { provide: UserService, useValue: userServiceStub } ],
-  //   })
-  //   .compileComponents();
-  // }));
-
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(LoginComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });
