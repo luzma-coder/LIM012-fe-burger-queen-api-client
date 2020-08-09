@@ -10,6 +10,7 @@ import { UserComponent } from './components/admin/users/user.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './components/admin/products/products/products.component';
 
 
 
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     PendingsComponent,
     UserComponent,
     NavigationComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

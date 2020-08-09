@@ -16,9 +16,12 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // consultar (route) GET /users/:uid
-  getUser(email: string): Observable<User> {
-    const url = `${this.url}users/:${email}`;
-    return this.http.get<User>(url, { params : { token : this.LStoken }});
+  getAdmin(email: string): Observable<User> {
+    const url = `${this.url}users/?email=${email}`;
+    return this.http.get<User>(url, { headers : { token : this.LStoken }});
   }
-
+  // getUsers(): Observable<User> {
+  //   const url = `${this.url}users/${email}`;
+  //   return this.http.get<User>(url, { params : { token : this.LStoken }});
+  // }
 }
