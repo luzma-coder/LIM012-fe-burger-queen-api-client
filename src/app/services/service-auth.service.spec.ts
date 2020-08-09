@@ -21,7 +21,6 @@ describe('Service AuthService', () => {
 
 describe('Service AuthService call http', () => {
   let service: ServiceAuthService;
-  const serviceAuthService = jasmine.createSpyObj('ServiceAuthService', ['getServiceAuth']);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -60,10 +59,8 @@ describe('Service AuthService call http', () => {
   it('should return object with status 200', () => {
       serviceSpy = spyOn(service, 'getServiceAuth').and.returnValue(of(data));
       service.getServiceAuth(objuser)
-      // .toPromise().then(( resp: any ) => {
       .subscribe(( resp: any ) => {
         expect(resp.status).toEqual(200);
       });
-    // expect(service.getServiceAuth).toHaveBeenCalled();
   });
 });

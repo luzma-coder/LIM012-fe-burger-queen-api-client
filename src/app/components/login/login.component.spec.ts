@@ -6,7 +6,6 @@ import { of } from 'rxjs';
 
 import { routes } from '../../app-routing.module';
 import { LoginComponent } from './login.component';
-import { OrderComponent } from '../waiter/order/order.component';
 import { ServiceAuthService } from '../../services/service-auth.service';
 
 describe('LoginComponent', () => {
@@ -16,7 +15,7 @@ describe('LoginComponent', () => {
   let router: Router;
 
   const serviceAuthService = jasmine.createSpyObj('ServiceAuthService', ['getServiceAuth']);
-  const data = {
+  let data = {
     body  : {
       token : '823747jnd',
     },
@@ -64,8 +63,6 @@ describe('LoginComponent', () => {
   it('navigate to "login" redirects you to /login', fakeAsync(() => {
     router.navigate(['']).then(() => {
       tick(0);
-      console.log('--------------prueba----------------');
-      console.log(location.path());
       expect(location.path()).toBe('/login');
     });
   }));
@@ -73,10 +70,36 @@ describe('LoginComponent', () => {
   it('navigate to "order" redirects you to /order', fakeAsync(() => {
     router.navigate(['navigation/order']).then(() => {
       tick(0);
-      console.log('--------------prueba----------------');
-      console.log(location.path());
       expect(location.path()).toBe('/navigation/order');
     });
   }));
 
+  it('should be status code 200 redirects to /order',  fakeAsync(() => {
+    const objuser = {
+      email: 'prueba@burguer.com',
+      password: '123456'
+    };
+    component.authUser(objuser.email, objuser.password);
+    tick();
+    fixture.detectChanges();
+    expect(location.path()).toBe('/navigation/order');
+  }));
+
+  it('should be status code 400',  fakeAsync(() => {
+    const objuser = {
+      email: '',
+      password: ''
+    };
+    data = {
+      body  : {
+        token : '823747jnd',
+      },
+      status : 400
+    };
+    component.authUser(objuser.email, objuser.password);
+    tick();
+    fixture.detectChanges();
+    console.log(data.status);
+    expect(data.status).toMatch('400');
+  }));
 });
