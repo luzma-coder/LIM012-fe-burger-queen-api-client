@@ -1,7 +1,9 @@
-.deco{
-    background: aquamarine;
-    margin: 2% 2% 0%;
-    border-radius: 10px;
+$colorbgdata: #F2F2F2;
+:host{
+    background-color: $colorbgdata;
+    padding: 4%;
+    border-radius: 20px;
+    box-shadow: grayscale($color: #000000);
 }
 aside{
     width: 60%;

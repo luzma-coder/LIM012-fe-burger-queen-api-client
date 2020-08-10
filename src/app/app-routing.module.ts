@@ -5,6 +5,7 @@ import { PendingsComponent } from './components/waiter/pendings/pendings.compone
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { UserComponent } from './components/admin/users/user.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductsComponent } from './components/admin/products/products/products.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
       { path: 'order', component: OrderComponent },
       { path: 'pendings', component: PendingsComponent },
       { path: 'user', component: UserComponent },
+      { path: 'products', component: ProductsComponent },
     ]
   },
 ];
