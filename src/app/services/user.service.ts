@@ -27,8 +27,13 @@ export class UserService {
 
 // consultar del servidor (route) GET /users/
   getUsers(): Observable<User[]> {
-    console.log(this.urlUsers);
     return this.http.get<User[]>(this.urlUsers);
+  }
+
+// consultar del servidor (route) GET /users/
+  getUser(id: number): Observable<User> {
+    console.log(`${this.urlUsers}/${id}`);
+    return this.http.get<User>(`${this.urlUsers}/${id}`);
   }
 
 // enviar al servidor un nuevo usuario (route) POST /users
@@ -36,17 +41,16 @@ export class UserService {
     return this.http.post<User>(this.urlUsers, user);
   }
 
-// DELETE
-  deleteUser(user: User | string): Observable<User> {
-    const id = typeof user === 'string' ? user : user._id;
-    const url = `${this.urlUsers}/${id}`;
-    console.log(url);
-    console.log(id);
-    return this.http.delete<User>(url, this.httpOptions);
+// eliminar un usuario DELETE
+  deleteUser(user: User | number): Observable<User> {
+    console.log(typeof user);
+    const id = typeof user === 'number' ? user : user.id;
+
+    return this.http.delete<User>(`${this.urlUsers}/${id}`);
   }
 
-// PUT
+// actualizar datos del usuario PUT
   updateUser(user: User): Observable<any> {
-    return this.http.put(this.urlUsers, user, this.httpOptions);
+    return this.http.put(`${this.urlUsers}/${user.id}`, user, this.httpOptions);
   }
 }

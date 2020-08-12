@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
 
   deleteUser(user: User): void{
     this.arrUsers = this.arrUsers.filter(data => data !== user);
-    this.userService.deleteUser(user);
+    this.userService.deleteUser(user).subscribe();
   }
 
   cancel(): void{

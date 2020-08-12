@@ -50,7 +50,6 @@ describe('Service AuthService call http', () => {
   it('should return object with token', () => {
     serviceSpy = spyOn(service, 'getServiceAuth').and.returnValue(of(data));
     service.getServiceAuth(objuser)
-    // .toPromise().then(( resp: any ) => {
     .subscribe(( resp: any ) => {
       expect(resp.body.token).toEqual('823747jnd');
     });
