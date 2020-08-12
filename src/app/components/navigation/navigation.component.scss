@@ -1,14 +1,19 @@
 $colorbg: #f2bf27;
 $colorbgnav: #D99255;
 $colorbguser: #d91e0d;
-$colorbgdata: #F2F2F2;
 $colortext: #2E2C2C;
-
-section{
+:host{
     background-color: $colorbg;
     padding: 2%;
     height: 100vh;
+    display: flex;
 }
+
+// section{
+//     background-color: $colorbg;
+//     padding: 2%;
+//     height: 100vh;
+// }
 
 nav{
     background-color: $colorbgnav;
@@ -22,6 +27,7 @@ nav{
     padding-top: 2%;
     height: 10%;
     text-align: center;
+    box-sizing: border-box;
     background-color: $colorbguser;
     border: 2px solid black;
 }

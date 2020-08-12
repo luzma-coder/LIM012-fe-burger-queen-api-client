@@ -1,48 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 
+import { User } from 'src/app/interfaces/user';
+// import { User } from './../../../interfaces/user, raiz del proyecto';
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  totUsers = [
-    {email: 'email1@nuevo.com', password: '11111'},
-    {email: 'email2@nuevo.com', password: '21111'},
-    {email: 'email3@nuevo.com', password: '31111'},
-    {email: 'email4@nuevo.com', password: '41111'},
-  ];
-  constructor() { }
+  arrUsers: User[];
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.listUsers();
   }
 
-  // leer un usuario
+  listUsers(): void {
+    this.userService.getUsers()
+    .subscribe(users => this.arrUsers = users);
+  }
 
-  // (): void {
+  addUser(email: string, password: string): void{
+    email = email.trim();
+    password = password.trim();
+    const objUser = {
+      email,
+      password,
+      roles: { admin: false}
+    };
+    if (!email) { return; }
+    this.userService.postUser( objUser  as User)
+      .subscribe(datauser => {
+        this.arrUsers.push(datauser);
+      });
+  }
 
-//   this.userService.getUser(email)
-//   .subscribe((data) => {
-//     if (data.roles.admin){
-//       this.router.navigate(['/navigation/user']);
-//     } else {
-//       this.router.navigate(['/navigation/order']);
-//     }
-//   });
-//   ,  (error: HttpErrorResponse) => {
-//     alert('email y password son necesarios');
-//     console.log(error.status);
-
-// }
-// }
-
-//   ler todos
-
-  updateUser(): void{
+  updateUser(user: User): void{
 
   }
 
-  deleteUser(): void{
+  deleteUser(user: User): void{
+    this.arrUsers = this.arrUsers.filter(data => data !== user);
+    this.userService.deleteUser(user);
+  }
+
+  cancel(): void{
 
   }
 }

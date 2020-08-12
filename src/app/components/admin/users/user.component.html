@@ -1,12 +1,13 @@
 <h2>USUARIOS</h2>
 <div class="dflex">
   <aside>
-    <ul class="">
-      <li *ngFor="let user of totUsers">
+    <ul class="ul-users">
+      <li *ngFor="let user of arrUsers">
+        <span class="badge">{{user._id}}</span> {{user.email}}
         <a routerLink="/detail/{{user.email}}">
-          <span class="badge">{{user.email}}</span> {{user.password}}
+          editar
         </a>
-        <button class="delete" title="delete User"
+        <button class="btn" title="delete User"
           (click)="deleteUser(user)">x</button>
       </li>
     </ul>
@@ -19,8 +20,7 @@
     <label>Password:
       <input #userPassword />
     </label>
-    <button (click)="updateUser()">
-      Guardar
-    </button>
+    <button (click)="addUser(userEmail.value,userPassword.value)">New Worker</button>
+    <button (click)="cancel()">Discard Changes</button>
   </section>
 </div>

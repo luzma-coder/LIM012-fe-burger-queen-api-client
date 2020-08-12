@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { ServiceAuthService } from '../../services/service-auth.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +13,12 @@ import { ServiceAuthService } from '../../services/service-auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @Input() user: User;
 
   constructor(
     private router: Router,
-    private authService: ServiceAuthService
+    private authService: ServiceAuthService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +41,20 @@ export class LoginComponent implements OnInit {
       .subscribe((resp: any) => {
         if (resp.body.token.length > 0 && resp.status === 200) {
           localStorage.setItem('token', resp.body.token);
-          this.navigateToOrders();
+          this.userService.getAdmin(objUser.email)
+          .subscribe((data) => {
+            const objCurrent = {
+              id: data[0]._id,
+              email: data[0].email,
+              admin: data[0].roles.admin,
+            };
+            localStorage.setItem('currentUser', `${data[0].email}-${data[0].roles.admin}-${data[0]._id}`);
+            if (data[0].roles.admin){
+              this.router.navigate(['/navigation/user']);
+            } else {
+              this.navigateToOrders();
+            }
+          });
         }
       }, (error: HttpErrorResponse) => {
         alert('email y password son necesarios');

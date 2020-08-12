@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   active = 'top';
+  arrCurrentUser: any;
+  currentUser = localStorage.getItem('currentUser');
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.arrCurrentUser = this.currentUser.split('-');
   }
   navigateToOrders(): void {
     this.router.navigate(['/navigation/order']);
@@ -23,6 +27,9 @@ export class NavigationComponent implements OnInit {
   }
   navigateToUsers(): void {
     this.router.navigate(['/navigation/user']);
+  }
+  navigateToProducts(): void {
+    this.router.navigate(['/navigation/products']);
   }
 }
 
