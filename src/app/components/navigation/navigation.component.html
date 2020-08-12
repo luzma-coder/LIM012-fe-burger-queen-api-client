@@ -1,10 +1,12 @@
 <nav>
     <p class="infouser">usuario: {{ arrCurrentUser[0] }} </p>
-    <button class="btn btn-primary btn-lg btn-block" (click)="navigateToOrders()">Orders </button>
-    <button class="btn btn-primary btn-lg btn-block" (click)="navigateToPendings()">Pendings </button>
-    <button *ngIf="arrCurrentUser[1]==='true'" class="btn btn-primary btn-lg btn-block" (click)="navigateToUsers()">Users </button>
-    <button *ngIf="arrCurrentUser[1]==='true'" class="btn btn-primary btn-lg btn-block" (click)="navigateToProducts()">Productos </button>
-    <button id="btnlogout" class="btn btn-primary btn-lg btn-block" (click)="navigateToLogin()">LogOut</button>
+    <button class="btn btn-lg btn-block" (click)="navigateToOrders()">🍔 Orders </button>
+    <button class="btn btn-lg btn-block" (click)="navigateToPendings()">⏰ Orders List</button>
+    <button class="btn btn-lg btn-block" (click)="navigateToKitchen()">👩‍🍳 Kitchen </button>
+    <button *ngIf="arrCurrentUser[1]==='true'" class="btn btn-lg btn-block" (click)="navigateToUsers()">👔 Users </button>
+    <button *ngIf="arrCurrentUser[1]==='true'" class=" btn btn-lg btn-block" (click)="navigateToProducts()">📑 Products </button>
+    <button id="btnlogout" class="btn btn-warning btn-lg btn-block" (click)="navigateToLogin()">LogOut</button>
 </nav>
-
-<router-outlet></router-outlet>
+<section class="main">
+    <router-outlet></router-outlet>
+</section>

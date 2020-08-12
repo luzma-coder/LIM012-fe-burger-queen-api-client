@@ -31,5 +31,9 @@ export class NavigationComponent implements OnInit {
   navigateToProducts(): void {
     this.router.navigate(['/navigation/products']);
   }
+
+  navigateToKitchen(): void{
+    this.router.navigate(['/navigation/kitchen']);
+  }
 }
 

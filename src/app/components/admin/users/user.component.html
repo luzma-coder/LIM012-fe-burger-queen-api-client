@@ -1,9 +1,9 @@
-<h2>USUARIOS</h2>
+<h2>USERS</h2>
 <div class="dflex">
   <aside>
     <ul class="ul-users">
       <li *ngFor="let user of arrUsers">
-        <span class="badge">{{user._id}}</span> {{user.email}}
+        <span class="badge">{{user.id}}</span> {{user.email}}
         <a routerLink="/detail/{{user.email}}">
           editar
         </a>
@@ -20,7 +20,7 @@
     <label>Password:
       <input #userPassword />
     </label>
-    <button (click)="addUser(userEmail.value,userPassword.value)">New Worker</button>
+    <button class="btn btn-lg" (click)="addUser(userEmail.value,userPassword.value)">New Worker</button>
     <button (click)="cancel()">Discard Changes</button>
   </section>
 </div>
