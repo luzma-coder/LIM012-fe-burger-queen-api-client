@@ -7,7 +7,7 @@ export interface Order {
     products: [
         {
         qty: number;        // Cantidad
-         product: Product;  // Object Producto
+        product: Product;  // Object Producto
         }
     ];
     status: string;          // Estado: `pending`, `canceled`, `delivering` o `delivered`
