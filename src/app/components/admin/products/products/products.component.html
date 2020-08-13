@@ -1,5 +1,35 @@
-<h2>PRODUCTS</h2>
+<h2>USERS</h2>
 <div class="dflex">
-    <aside></aside>
-    <section></section>
+    <aside>
+        <ul class="ul-users">
+            <li *ngFor="let product of arrProduct">
+                <span class="badge name">{{product.id}}</span> {{product.name}}
+                <span class="badge"></span> {{product.price}}
+                <a routerLink="/detail/{{product.name}}">
+                    editar
+                </a>
+                <button class="btn" title="delete User" (click)="deleteProduct(product)">x</button>
+            </li>
+        </ul>
+    </aside>
+
+    <section>
+        <label>Name:
+            <input #productName />
+        </label>
+        <label>Price:
+            <input #productPrice />
+        </label>
+        <label>Type:
+            <input #productType />
+        </label>
+        <label>Image:
+            <input #productImage />
+        </label>
+        <button class="" (click)="addProduct(productName.value,productPrice.value,productType,productImage)">New
+            Product</button><br>
+        <button (click)="cancel()">Edit</button><br>
+        <button (click)="cancel()">Save Changes</button><br>
+        <button (click)="cancel()">Discard Changes</button>
+    </section>
 </div>
