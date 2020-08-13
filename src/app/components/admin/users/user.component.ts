@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 // import { User } from './../../../interfaces/user, raiz del proyecto';
 import { UserService } from 'src/app/services/user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +12,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
   arrUsers: User[];
-
-  constructor(private userService: UserService) { }
+  userForm: FormGroup;
+  constructor(
+    private userService: UserService,
+    private fbuilder: FormBuilder,
+  ) {
+    this.userForm = this.fbuilder.group({
+      email: ['', Validators.compose([Validators.email, Validators.required])],
+      password: ['',  Validators.required],
+    });
+   }
 
   ngOnInit(): void {
     this.listUsers();
@@ -23,19 +32,13 @@ export class UserComponent implements OnInit {
     .subscribe(users => this.arrUsers = users);
   }
 
-  addUser(email: string, password: string): void{
-    email = email.trim();
-    password = password.trim();
-    const objUser = {
-      email,
-      password,
-      roles: { admin: false}
-    };
-    if (!email) { return; }
-    this.userService.postUser( objUser  as User)
-      .subscribe(datauser => {
-        this.arrUsers.push(datauser);
-      });
+  addUser(dataform): void{
+    dataform.roles = {admin: false};
+    console.log(dataform);
+    this.userService.postUser( dataform  as User)
+    .subscribe(datauser => {
+      this.arrUsers.push(datauser);
+    });
   }
 
   updateUser(user: User): void{
