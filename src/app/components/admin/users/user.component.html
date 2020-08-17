@@ -7,21 +7,22 @@
         <a routerLink="/detail/{{user.email}}">
           editar
         </a>
-        <button class="btn" title="delete User"
-          (click)="deleteUser(user)">x</button>
+        <button class="btn" title="delete User" (click)="deleteUser(user)">x</button>
       </li>
     </ul>
   </aside>
 
   <section>
     <form [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
-    <label >Id</label> <br>
+      <label>Id</label> <br>
       <label>Email</label>
       <input formControlName="email" type="email">
-      <div *ngIf="userForm.get('email').hasError('email') && userForm.get('email').touched">Ingrese un email correcto</div>
+      <div *ngIf="userForm.get('email').hasError('email') && userForm.get('email').touched">Ingrese un email correcto
+      </div>
       <label>Password</label>
       <input formControlName="password" type="password">
-      <div *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">Password es necesario</div>
+      <div *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">Password es
+        necesario</div>
       <button [disabled]="userForm.invalid" type="submit">New Worker</button>
     </form>
   </section>
