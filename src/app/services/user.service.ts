@@ -43,14 +43,13 @@ export class UserService {
 
 // eliminar un usuario DELETE
   deleteUser(user: User | number): Observable<User> {
-    console.log(typeof user);
     const id = typeof user === 'number' ? user : user.id;
 
     return this.http.delete<User>(`${this.urlUsers}/${id}`);
   }
 
-// actualizar datos del usuario PUT
-  updateUser(user: User): Observable<any> {
-    return this.http.put(`${this.urlUsers}/${user.id}`, user, this.httpOptions);
+// actualizar datos del usuario PATCH
+  updateUser(userId: string, userData: object): Observable<any> {
+    return this.http.patch(`${this.urlUsers}/${userId}`, userData, this.httpOptions);
   }
 }

@@ -34,30 +34,12 @@
             </div>
             <br>
             <label>Image</label>
-            <input formControlName="image" type="file">
+            <input formControlName="image" accept=".png, .jpg" type="file">
             <div *ngIf="productForm.get('image').hasError('required') && productForm.get('image').touched">
                 Is necessary Image
             </div>
             <br>
             <button [disabled]="productForm.invalid" type="submit">New Product</button>
         </form>
-
-        <!-- <label>Name:
-            <input #productName />
-        </label>
-        <label>Price:
-            <input #productPrice />
-        </label>
-        <label>Type:
-            <input #productType />
-        </label>
-        <label>Image:
-            <input #productImage />
-        </label>
-        <button class="" (click)="addProduct(productName.value,productPrice.value,productType,productImage)">New
-            Product</button><br>
-        <button (click)="cancel()">Edit</button><br>
-        <button (click)="cancel()">Save Changes</button><br>
-        <button (click)="cancel()">Discard Changes</button> -->
     </section>
 </div>
