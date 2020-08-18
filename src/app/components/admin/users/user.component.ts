@@ -23,9 +23,9 @@ export class UserComponent implements OnInit {
   ) {
     this.userForm = this.fbuilder.group({
       email: ['', Validators.compose([Validators.email, Validators.required])],
-      password: ['',  Validators.required],
+      password: ['', Validators.required],
     });
-   }
+  }
 
   ngOnInit(): void {
     this.listUsers();
@@ -49,14 +49,14 @@ export class UserComponent implements OnInit {
     });
   }
 
-  editUser(dataUser): void{
+  editUser(dataUser): void {
     this.isEdit = true;
     this.txtFormLegend = 'Update Worker';
     this.selectedUserId = dataUser.id;
-    this.userForm.patchValue({email: dataUser.email, password: dataUser.password});
+    this.userForm.patchValue({ email: dataUser.email, password: dataUser.password });
   }
 
-  saveUser(dataform): void{
+  saveUser(dataform): void {
     this.isEdit = false;
     this.userService.updateUser(this.selectedUserId, dataform)
     .subscribe(resp => {
@@ -66,7 +66,7 @@ export class UserComponent implements OnInit {
     });
   }
 
-  cancel(): void{
+  cancel(): void {
     this.isEdit = false;
     this.selectedUserId = '';
     this.txtFormLegend = ' Add Worker';
