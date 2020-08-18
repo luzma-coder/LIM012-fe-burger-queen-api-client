@@ -30,7 +30,23 @@ export class ProductsService {
     console.log(`${this.urlProduct}/${id}`);
     return this.http.get<Product>(`${this.urlProduct}/${id}`);
   }
+  // _________________________________________________________________________
 
+  uploadFile(File): Observable<any> {
+    const peticion = 'POST/products';
+    const json = JSON.stringify(File);
+    console.log(File);
+    const headers = new HttpHeaders().set('content-Type', 'application/json');
+    return this.http.post(this.urlProduct + peticion, File, { headers });
+  }
+
+  getUploads(): Observable<any> {
+    const peticion = 'GET/products';
+    return this.http.get(this.urlProduct + peticion);
+  }
+
+
+  // _________________________________________________________________________
   // enviar al servidor un nuevo usuario (route) POST /users
   postProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.urlProduct, product);
