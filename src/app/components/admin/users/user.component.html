@@ -1,29 +1,38 @@
-<h2>USERS</h2>
+<h2>USERS</h2> <h3> total: {{ totalUsers }}</h3>
 <div class="dflex">
   <aside>
     <ul class="ul-users">
       <li *ngFor="let user of arrUsers">
-        <span class="badge">{{user.id}}</span> {{user.email}}
-        <button class="btn" title="Edit User"
-          (click)="editUser(user)">editar</button>
-        <button class="btn" title="Delete User"
-          (click)="deleteUser(user)">x</button>
+        <span class="badge">{{user.id}}</span> 
+        <span class="right">{{user.email}}</span>
+        <div class="dflex">
+          <button class="btn btn-sm" title="Edit User"
+            (click)="editUser(user)">edit</button>
+          <button class="btn btn-sm" title="Delete User"
+            (click)="deleteUser(user)">x</button>
+        </div>
       </li>
     </ul>
   </aside>
 
   <section>
-    <form [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
-    <label>Id {{selectedUser}}</label> <br>
-      <label>Email</label>
-      <input formControlName="email" type="email">
-      <div *ngIf="userForm.get('email').hasError('email') && userForm.get('email').touched">Ingrese un email correcto</div>
-      <label>Password</label>
-      <input formControlName="password" type="password">
-      <div *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">Password es necesario</div>
-      <button [disabled]="userForm.invalid" type="submit" *ngIf="!isEdit">New Worker</button>
-      <button [disabled]="userForm.invalid" (click)="saveUser(userForm.value)" *ngIf="isEdit">Save Worker</button>
-      <button (click)="cancel()" *ngIf="isEdit">Cancel </button>
+    <form class="dflex fd-col" [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
+      <fieldset>
+        <legend>{{txtFormLegend}}</legend>
+        <label *ngIf="isEdit">Id {{selectedUserId}}</label>
+        <label>Email</label>
+        <input formControlName="email" type="email">
+        <div *ngIf="userForm.get('email').hasError('email') && userForm.get('email').touched">Ingrese un email correcto</div>
+        <label>Password</label>
+        <input formControlName="password" type="password">
+        <div *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">Password es necesario</div>
+        <div class="fd-col">
+          <button [disabled]="userForm.invalid" type="submit" *ngIf="!isEdit">New Worker</button>
+          <button (click)="clear()" type="button" *ngIf="!isEdit">Cancel</button>
+          <button [disabled]="userForm.invalid" (click)="saveUser(userForm.value)" *ngIf="isEdit">Save Worker</button>
+          <button (click)="cancel()" *ngIf="isEdit">Cancel</button>
+        </div>
+      </fieldset>
     </form>
   </section>
 </div>

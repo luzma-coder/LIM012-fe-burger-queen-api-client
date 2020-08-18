@@ -7,12 +7,16 @@ import { of } from 'rxjs';
 import { routes } from '../../app-routing.module';
 import { LoginComponent } from './login.component';
 import { ServiceAuthService } from '../../services/service-auth.service';
+import { UserService } from 'src/app/services/user.service';
+import { USERS, dataUSER } from 'src/assets/mock-data';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let location: Location;
   let router: Router;
+  let userService;
+  let getUsersSpy;
 
   const serviceAuthService = jasmine.createSpyObj('ServiceAuthService', ['getServiceAuth']);
   let data = {
@@ -26,11 +30,14 @@ describe('LoginComponent', () => {
   getServiceAuthSpy = serviceAuthService.getServiceAuth.and.returnValue( of(data) );
 
   beforeEach(async(() => {
+    userService = jasmine.createSpyObj('UserService', ['getAdmin']);
+    getUsersSpy = userService.getAdmin.and.returnValue( of(dataUSER) );
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       imports: [RouterTestingModule.withRoutes(routes)],
       providers: [
-        { provide: ServiceAuthService, useValue: serviceAuthService } ]
+        { provide: ServiceAuthService, useValue: serviceAuthService },
+        { provide: UserService, useValue: userService } ]
     })
     .compileComponents();
   }));

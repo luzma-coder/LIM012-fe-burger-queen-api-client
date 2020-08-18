@@ -39,16 +39,16 @@ export class LoginComponent implements OnInit {
     };
     this.authService.getServiceAuth(objUser)
       .subscribe((resp: any) => {
+        console.log('longitud', resp.body.token.length);
+        console.log('body', resp.body);
         if (resp.body.token.length > 0 && resp.status === 200) {
           localStorage.setItem('token', resp.body.token);
           this.userService.getAdmin(objUser.email)
           .subscribe((data) => {
-            const objCurrent = {
-              id: data[0]._id,
-              email: data[0].email,
-              admin: data[0].roles.admin,
-            };
-            localStorage.setItem('currentUser', `${data[0].email}-${data[0].roles.admin}-${data[0]._id}`);
+            localStorage.setItem('currentUserId', data[0].id);
+            localStorage.setItem('currentUserEmail', data[0].email);
+            localStorage.setItem('currentUserAdmin', data[0].roles.admin);
+            // localStorage.setItem('currentUser', `${data[0].email}-${data[0].roles.admin}-${data[0].id}`);
             if (data[0].roles.admin){
               this.router.navigate(['/navigation/user']);
             } else {

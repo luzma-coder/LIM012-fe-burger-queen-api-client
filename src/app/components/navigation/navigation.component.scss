@@ -12,15 +12,15 @@ $colorbginfo: #f2f2f2;
 }
 
 .main{
+    width: 100%;
     background-color: $colorbginfo;
-    padding: 4%;
+    padding: 2%;
     border-radius: 20px;
     box-shadow: grayscale($color: #000000);
 }
 
 nav{
     background-color: $colorbgnav;
-    // padding: 2% 0% 2% 2%;
     width: 20%;
     border-radius: 10px;
 }
@@ -36,7 +36,7 @@ nav{
     border: 2px solid grey;
 }
 #btnlogout{
-    margin-top: 40%;
+    margin: 30% 5% 0%;
 }
 button{
     width: 90%;

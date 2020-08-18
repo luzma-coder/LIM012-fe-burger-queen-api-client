@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   active = 'top';
-  arrCurrentUser: any;
-  currentUser = localStorage.getItem('currentUser');
+  currentUserEmail = localStorage.getItem('currentUserEmail');
+  currentUserAdmin = localStorage.getItem('currentUserAdmin');
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.arrCurrentUser = this.currentUser.split('-');
+    console.log('email logueado', this.currentUserEmail);
+    console.log('admin ', this.currentUserAdmin);
   }
+
   navigateToOrders(): void {
     this.router.navigate(['/navigation/order']);
   }

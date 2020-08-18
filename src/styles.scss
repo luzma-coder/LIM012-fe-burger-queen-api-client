@@ -8,6 +8,9 @@ pre{background:orange}
 .dflex {
     display: flex;
 }
+.fd-col{
+    flex-direction: column;
+}
 .bginfo{
     background-color: $colorbgdata;
     border-radius: 20px;
